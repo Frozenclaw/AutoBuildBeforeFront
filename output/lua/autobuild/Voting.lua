@@ -1,3 +1,6 @@
+
+kVoteCannotStartReason = enum( { 'VoteAllowedToStart', 'VoteInProgress', 'Waiting', 'Spam', 'DisabledByAdmin', 'GameInProgress', 'TooEarly', 'TooLate', 'UnsupportedGamemode', 'FrontDoorsOpen' } )
+
 kVoteCannotStartReasonStrings[kVoteCannotStartReason.FrontDoorsOpen] = "VOTE_FRONT_DOORS_OPEN"
 
 if Server then
@@ -68,8 +71,6 @@ if Server then
 			if not VotingAutoBuildAllowed() then
 				if GetGamerules():GetFrontDoorsOpen() == false then
 					return kVoteCannotStartReason.FrontDoorsOpen
-				else
-					return kVoteCannotStartReason.GameInProgress
 				end
 			end
 		end
@@ -258,3 +259,4 @@ if Server then
     
 end
 
+Script.Load("lua/Shared.lua")

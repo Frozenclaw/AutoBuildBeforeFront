@@ -1,33 +1,33 @@
 local kExecuteVoteDelay = 5
 
-RegisterVoteType("VoteResetGame", { })
+RegisterVoteType("VoteAutoBuild", { })
 
 if Client then
 
-    local function SetupResetGameVote(voteMenu)
+    local function SetupAutoBuildVote(voteMenu)
     
-        local function StartResetGameVote(data)
-            AttemptToStartVote("VoteResetGame", { })
+        local function StartAutoBuildVote(data)
+            AttemptToStartVote("VoteAutoBuild", { })
         end
         
-        voteMenu:AddMainMenuOption(Locale.ResolveString("VOTE_RESET_GAME"), nil, StartResetGameVote)
+        voteMenu:AddMainMenuOption(Locale.ResolveString("VOTE_AUTO_BUILD"), nil, StartAutoBuildVote)
         
         -- This function translates the networked data into a question to display to the player for voting.
-        local function GetVoteResetGameQuery(data)
-            return Locale.ResolveString("VOTE_RESET_GAME_QUERY")
+        local function GetVoteAutoBuildQuery(data)
+            return Locale.ResolveString("VOTE_AUTO_BUILD_QUERY")
         end
-        AddVoteStartListener("VoteResetGame", GetVoteResetGameQuery)
+        AddVoteStartListener("VoteAutoBuild", GetVoteAutoBuildQuery)
         
     end
-    AddVoteSetupCallback(SetupResetGameVote)
+    AddVoteSetupCallback(SetupAutoBuildVote)
     
 end
 
 if Server then
 
-    local function OnResetGameVoteSuccessful(data)
-        GetGamerules():ResetGame()
+    local function OnAutoBuildVoteSuccessful(data)
+        Log("Vote Successful!")
     end
-    SetVoteSuccessfulCallback("VoteResetGame", kExecuteVoteDelay, OnResetGameVoteSuccessful)
+    SetVoteSuccessfulCallback("VoteAutoBuild", kExecuteVoteDelay, OnAutoBuildVoteSuccessful)
     
 end
