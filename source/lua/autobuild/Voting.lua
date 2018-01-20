@@ -71,7 +71,7 @@ if Server then
 		
 		if voteName == "VoteAutoBuild" then
 			if not VotingAutoBuildAllowed() then
-				if GetGamerules():GetFrontDoorsOpen() == false and GetGamerules():GetGameStarted() == true then
+				if GetGamerules():GetFrontDoorsOpen() == true and GetGamerules():GetGameStarted() == true then
 					return kVoteCannotStartReason.TooLate 
 				else
 					return kVoteCannotStartReason.TooEarly

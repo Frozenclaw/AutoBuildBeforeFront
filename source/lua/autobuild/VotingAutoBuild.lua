@@ -26,7 +26,7 @@ end
 if Server then
 
     local function OnAutoBuildVoteSuccessful(data)
-        Log("Vote Successful!")
+        GetGamerules():GetFrontAutoBuild() 
     end
     SetVoteSuccessfulCallback("VoteAutoBuild", kExecuteVoteDelay, OnAutoBuildVoteSuccessful)
     
