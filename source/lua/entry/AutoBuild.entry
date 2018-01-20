@@ -1,5 +1,4 @@
 modEntry = {
-	Shared = "lua/autobuild/Shared.lua",
 	FileHooks = "lua/autobuild/FileHooks.lua",
 	Priority = 35
 }

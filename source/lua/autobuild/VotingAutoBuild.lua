@@ -10,11 +10,11 @@ if Client then
             AttemptToStartVote("VoteAutoBuild", { })
         end
         
-        voteMenu:AddMainMenuOption(Locale.ResolveString("VOTE_AUTO_BUILD"), nil, StartAutoBuildVote)
+        voteMenu:AddMainMenuOption(Locale.ResolveString("AutoBuild Before Front"), nil, StartAutoBuildVote)
         
         -- This function translates the networked data into a question to display to the player for voting.
         local function GetVoteAutoBuildQuery(data)
-            return Locale.ResolveString("VOTE_AUTO_BUILD_QUERY")
+            return Locale.ResolveString("Enable AutoBuild Before Front?")
         end
         AddVoteStartListener("VoteAutoBuild", GetVoteAutoBuildQuery)
         

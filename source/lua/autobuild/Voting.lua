@@ -1,4 +1,10 @@
 
+local kVoteExpireTime = 20
+local kDefaultVoteExecuteTime = 30
+local kNextVoteAllowedAfterTime = 50
+-- How many seconds must pass before a client can start another vote of a certain type after a failed vote.
+local kStartVoteAfterFailureLimit = 3 * 60
+
 if Server then
 
     -- Allow reset between Countdown and kMaxTimeBeforeReset
@@ -9,7 +15,7 @@ if Server then
     
 	function VotingAutoBuildAllowed()
 		local gameRules = GetGamerules()
-		return gamerules:GetFrontDoorsOpen() == false or gameRules:GetGameStarted()
+		return gameRules:GetFrontDoorsOpen() == false and gameRules:GetGameStarted()
 	end 
 	
     local activeVoteName, activeVoteData, activeVoteResults, activeVoteStartedAtTime
@@ -65,8 +71,10 @@ if Server then
 		
 		if voteName == "VoteAutoBuild" then
 			if not VotingAutoBuildAllowed() then
-				if GetGamerules():GetFrontDoorsOpen() == false then
+				if GetGamerules():GetFrontDoorsOpen() == false and GetGamerules():GetGameStarted() == true then
 					return kVoteCannotStartReason.TooLate 
+				else
+					return kVoteCannotStartReason.TooEarly
 				end
 			end
 		end
@@ -255,4 +263,4 @@ if Server then
     
 end
 
-Script.Load("lua/Shared.lua")
+Script.Load("lua/autobuild/VotingAutoBuild.lua")
