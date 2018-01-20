@@ -1,8 +1,4 @@
 
-kVoteCannotStartReason = enum( { 'VoteAllowedToStart', 'VoteInProgress', 'Waiting', 'Spam', 'DisabledByAdmin', 'GameInProgress', 'TooEarly', 'TooLate', 'UnsupportedGamemode', 'FrontDoorsOpen' } )
-
-kVoteCannotStartReasonStrings[kVoteCannotStartReason.FrontDoorsOpen] = "VOTE_FRONT_DOORS_OPEN"
-
 if Server then
 
     -- Allow reset between Countdown and kMaxTimeBeforeReset
@@ -70,7 +66,7 @@ if Server then
 		if voteName == "VoteAutoBuild" then
 			if not VotingAutoBuildAllowed() then
 				if GetGamerules():GetFrontDoorsOpen() == false then
-					return kVoteCannotStartReason.FrontDoorsOpen
+					return kVoteCannotStartReason.TooLate 
 				end
 			end
 		end
