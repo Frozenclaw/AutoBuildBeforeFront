@@ -21,12 +21,12 @@ function ConstructMixin:OnConstructUpdate(deltaTime)
     
     end
 	
+	if GetGamerules():GetFrontAutoBuild() then
 	
-	if GetGamerules():GetFrontAutoBuild() then 
-	
-		if not self:GetIsBuilt() and (GetIsMarineUnit(self) and self.GetIsPowered and self:GetIsPowerd() or GetIsAlienUnit()) and GetGamerules():GetFrontDoorsOpen() == false then
+		if not self:GetIsBuilt() and (GetIsMarineUnit(self) and self.GetIsPowered and self:GetIsPowered() or GetIsAlienUnit(self)) and GetGamerules():GetFrontDoorsOpen() == false then
 			self:Construct(deltaTime)
-		end
+		end 
+		
 	end 
     
     if self.timeDrifterConstructEnds then

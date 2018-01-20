@@ -5,8 +5,8 @@ if Server then
 		return self.isAutoBuildUntilFront
 	end 
 
-	function NS2Gamerules:SetFrontAutoBuild(autobuild)
-		self.isAutoBuildUntilFront = autobuild
+	function NS2Gamerules:SetFrontAutoBuild(state)
+		self.isAutoBuildUntilFront = state
 	end
 	
 	function NS2Gamerules:ResetGame()
