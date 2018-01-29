@@ -1,9 +1,9 @@
 name        = "Autobuild Until Front Opens"
 source_dir  = "source"
 output_dir  = "output"
-description = [=[Add's a vote that when passed enables a slow autobuild until front doors open. The vote is for Siege ++
-
-Thanks to Nin and Tachi for helping me out even when I spoke gibberish xD
+description = [=[Add's a vote that when passed enables a slow autobuild until front doors open. The vote is for Siege ++
+
+Thanks to Nin and Tachi for helping me out even when I spoke gibberish xD
 Mod Id: 4c6318a5]=]
 image       = "preview.jpg"
 tag_modtype = ""
