@@ -39,3 +39,7 @@ luac.out
 *.x86_64
 *.hex
 
+source/lua/autobuild/ConstructMixin.lua
+output/lua/autobuild/Voting.lua
+output/lua/autobuild/ConstructMixin.lua
+mod.settings

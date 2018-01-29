@@ -1,4 +1,0 @@
-modEntry = {
-	FileHooks = "lua/autobuild/FileHooks.lua",
-	Priority = 35
-}

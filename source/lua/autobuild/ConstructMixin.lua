@@ -24,7 +24,7 @@ function ConstructMixin:OnConstructUpdate(deltaTime)
 	if GetGamerules():GetFrontAutoBuild() then
 		
 		if not self:GetIsBuilt() and (GetIsMarineUnit(self) and self.GetIsPowered and self:GetIsPowered() or GetIsAlienUnit(self)) and GetGamerules():GetFrontDoorsOpen() == false then
-			self:Construct(deltaTime)
+			self:Construct(deltaTime * 4)
 		end 
 		
 	end 
