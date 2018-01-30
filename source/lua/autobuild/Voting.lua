@@ -1,8 +1,9 @@
+
 if Server then
   -- Define your vote allowed function
   function VotingAutoBuildAllowed()
     local gameRules = GetGamerules()
-    return gameRules:GetFrontDoorsOpen() == false and gameRules:GetGameStarted()
+    return gameRules:GetFrontDoorsOpen() == false and gameRules:GetGameStarted() and Server.GetNumPlayers() <= 12
   end
 
   -- Save old GetStartVoteAllowed because of overuse of local variables
@@ -16,17 +17,19 @@ if Server then
       -- Check for your custom vote and perform the required logic
       if voteName == "VoteAutoBuild" then
   			if not VotingAutoBuildAllowed() then
-  				if GetGamerules():GetFrontDoorsOpen() == true and GetGamerules():GetGameStarted() == true then
+  				if GetGamerules():GetFrontDoorsOpen() and GetGamerules():GetGameStarted() then
   					return kVoteCannotStartReason.TooLate
-  				else
-  					return kVoteCannotStartReason.TooEarly
+  				elseif Server.GetNumPlayers() > 12 then 
+  					return kVoteCannotStartReason.DisabledByAdmin
+				else 
+					return kVoteCannotStartReason.TooEarly
   				end
   			end
       end
 		end
     -- Return the original reason code if the custom logic isn't run
     return originalReason
-  end
+	end
 end
 
 Script.Load("lua/autobuild/VotingAutoBuild.lua")
